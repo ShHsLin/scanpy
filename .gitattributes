@@ -1,0 +1,6 @@
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+*.xls filter=lfs diff=lfs merge=lfs -text
+sim/**/* filter=lfs diff=lfs merge=lfs -text
+examples/**/*.txt filter=lfs diff=lfs merge=lfs -text

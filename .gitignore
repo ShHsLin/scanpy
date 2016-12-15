@@ -1,0 +1,52 @@
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*.cache
+*.egg-info
+*~
+*#
+
+# Python / Byte-compiled / optimized / DLL 
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints
+
+# R
+*.Rapp.history
+
+# C extensions
+*.so
+
+# OS or Editor folders
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+.tm_properties
+._*
+
+# Folders to ignore
+.hg
+.svn
+.CVS
+.idea
+_assets
+_design
+_content
+_tmp
+dist
+build
+_build

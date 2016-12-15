@@ -1,0 +1,25 @@
+# model = models/hill2dtoggle.txt | str 
+# dim = 2 | int 
+# seed = 0 | int 
+# tmax = 500 | int 
+# branching = True | bool 
+# nrRealizations = 2 | int 
+# initType = random | str 
+# noiseObs = 0.01 | float 
+# noiseDyn = 0.001 | float 
+# invTimeStep = 0.02 | float 
+# 
+# For each "variable = ", there must be a right hand side: 
+# either an empty string or python-style logical expresssions 
+# involving variable names, "or", "and", "(", ")". 
+# The order of equations matters! 
+# modelType = hill | str 
+# model = models/hill2dtoggle.txt | str
+# boolean update rules: 
+0 = 0 and not 1
+1 = 1 and not 0
+# coupling list: 
+0          0                 1.0 
+0          1                -1.0 
+1          0                -1.0 
+1          1                 1.0 
