@@ -544,15 +544,29 @@ def read_excel_hdf5_to_pandas(filename,sheet=''):
     # if there is no hdf5 file, read from excel file
     # and write the hdf5 file
     if not os.path.exists(filename_hdf5):
+        log.m(0,'reading file',filename)
         check_datafile(filename)
-        df = pd.read_excel(filename,sheet)
+        try:
+            df = pd.read_excel(filename,sheet)        
+        except Exception as e:
+            # in case this raises an error using Python 2 install xlrd via
+            # sudo pip install xlrd
+            print('try installing xlrd using "sudo pip install xlrd"') 
+            raise e
+        # TODO!!
+        # write as hdf5 file, in Python 3 using numpy the following works
         df.to_hdf(filename_hdf5,sheet)
+        # but for Python 2, we should use
+        # with h5py.File(filename_hdf5, 'w') as f:
+        #     f.create_dataset(filename_hdf5,data=df.values)
+        # with a work around for genenames and labels
     # read from hdf5 file, because it's faster
     # pandas has restrictions here, so you might use read_hdf5 
     # if reading from a hdf5 file that was not created using pandas
     # see, for example, the bug report 
     # http://stackoverflow.com/questions/33641246/pandas-cant-read-hdf5-file-created-with-h5py
     else:
+        log.m(0,'reading file',filename_hdf5)
         df = pd.read_hdf(filename_hdf5,sheet)
     return df
 
@@ -572,6 +586,7 @@ def read_hdf5(filename,key=''):
     d : dict
         Dictionary consisting of np.array, rownames and colnames.
     """
+    # log.m(0,'reading file',filename)
     check_datafile(filename)
     f = h5py.File(filename, 'r')
     # the following is necessary in Python 3, because only

@@ -6,7 +6,7 @@
 
 # scanpy - **s**ingle-**c**ell **an**alysis in **py**thon
 
-!! This is just a testing version that solely includes DPT and diffusion maps. !!
+!! This is just a testing version that solely includes DPT and Diffusion Maps. !!
 
 !! Comments are welcome. !!
 
@@ -67,14 +67,15 @@ We are not satisfied with taking the logarithm of the count matrix before
 running DPT for the data of [Paul *et al.* (2015)](#paul15) as in example
 `paul15` above. We copy the entry `paul15` from the dicionary `examples` in
 [scanpy/preprocess.py](scanpy/preprocess.py) and paste it into the dictionary 
-`examples` in [tools/preprocess.py](tools/preprocess.py). We then rewrite the key 
+`examples` in [tools/preprocess.py](tools/preprocess.py). We then rename the key 
 of the new entry to `"paul15_nolog"`. We do the same with the function
-`paul15`, and rewrite it without the log transform and the new name
+`paul15`, where we remove the log transform and rename it to 
 `paul15_nolog`.
 
-Running the new example, we now identify segment 3 with the branch of
-granulocyte/macrophage progenitors (GMP) and segment 2 with the branch of
-megakaryocyte/erythrocyte progenitors (MEP).
+Running `paul15_nolog`, we observe a considerably changed representation. Here,
+we identify segment 3 with the branch of granulocyte/macrophage progenitors
+(GMP) and segment 2 with the branch of megakaryocyte/erythrocyte progenitors
+(MEP).
 ```shell
 $ python tools/dpt.py paul15_nolog
 ```
